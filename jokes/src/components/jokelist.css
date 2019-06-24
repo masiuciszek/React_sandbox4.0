@@ -1,0 +1,44 @@
+.Jokelist{
+  display: flex;
+  width: 80%;
+  height:  80%;
+
+}
+
+.sidebar{
+background: rgb(179, 38, 245);
+display: flex;
+width: 15%;
+flex-direction: column;
+box-shadow: 3px 6px 11px -1px rgba(185, 49, 248, 0.795);
+z-index: 2;
+align-items: center;
+justify-content: center;
+}
+
+.sidebar img{
+  width: 50%;
+  box-shadow: 6px 2px 28px -1px rgba(250,58,250,1);
+  border-radius: 50%;
+}
+
+.sidebar h1 {
+  font-size: 4rem;
+  color: antiquewhite;
+  font-weight: 300;
+}
+
+.dad {
+  font-weight: 800;
+  color: bisque;
+  letter-spacing: 1.2rem;
+}
+
+.jokelist-jokes{
+  background: bisque;
+  width: 85%;
+  height: 90%;
+  overflow: scroll;
+  box-shadow: 6px 2px 28px -1px rgba(250, 58, 250, 0.247);
+  align-self: center;
+}
