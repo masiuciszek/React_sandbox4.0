@@ -23,6 +23,15 @@ justify-content: center;
   border-radius: 50%;
 }
 
+.sidebar img:hover{
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transition: ease-in-out;
+
+}
+
 .jokelist-tilte {
   font-size: 4rem;
   color: antiquewhite;
@@ -52,18 +61,24 @@ justify-content: center;
   padding: .8rem 1.1rem;
   margin-top: 4rem;
   border: 2px solid rgb(255, 255, 255);
-  background: transparent;
+  border-radius: 1.5rem;
   font-size: 1.8rem;
   font-weight: 800;
   color: #fff;
   transition: .2s ease-out;
   position: relative;
+  box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.308);
+  cursor: pointer;
+  word-spacing: 1rem;
+  background: rgb(63,94,251);
+  width: 50%;
+background: linear-gradient(90deg, rgb(73, 98, 223) 0%, rgba(185, 49, 248, 0.795) 100%);
 }
 
 .add-joke-btn:hover {
-  background: rgba(0, 0, 0, 0.639);
-  color: rgba(250, 58, 250, 0.247);
   border: rgba(185, 49, 248, 0.795);
+  transform: translateY(-5px);
+  box-shadow: 2px 4px 12px 4px rgba(0, 0, 0, 0.308);
 }
 
 .add-joke-btn:active{
@@ -83,3 +98,24 @@ justify-content: center;
 .loading h1{
   color: black;
 }
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+

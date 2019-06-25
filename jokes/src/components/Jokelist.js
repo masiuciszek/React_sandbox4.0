@@ -16,23 +16,33 @@ function JokeList(props) {
     if (jokes.length === 0) return getJokes();
   }, []);
 
+  let seenJokes = new Set(jokes.map(j => j.text));
+
   const getJokes = async () => {
-    const joke = [];
+    try {
+      const joke = [];
+      while (joke.length < props.numOfJokes) {
+        const res = await axios.get('https://icanhazdadjoke.com/', {
+          headers: { Accept: 'application/json' }
+        });
+        let newJoke = res.data.joke;
+        if (!seenJokes.has(newJoke)) {
+          joke.push({ id: uuid(), text: newJoke, votes: 0 });
+        } else {
+          console.log('Found a dublicate');
+          console.log(newJoke);
+        }
+      }
+      setJokes([...jokes, ...joke], () =>
+        window.localStorage.setItem('jokes', JSON.stringify(jokes))
+      );
 
-    while (joke.length < props.numOfJokes) {
-      const res = await axios.get('https://icanhazdadjoke.com/', {
-        headers: { Accept: 'application/json' },
-      });
-      joke.push({ id: uuid(), text: res.data.joke, votes: 0 });
+      setLoading(false);
+      window.localStorage.setItem('jokes', JSON.stringify(joke));
+    } catch (err) {
+      console.error(err.message);
+      setLoading(false);
     }
-    setJokes([...jokes, ...joke], () =>
-      window.localStorage.setItem('jokes', JSON.stringify(jokes))
-    );
-
-
-
-    setLoading(false);
-    window.localStorage.setItem('jokes', JSON.stringify(joke));
   };
 
   const handleVote = (id, delta) => {
@@ -47,10 +57,9 @@ function JokeList(props) {
   const handleClick = () => {
     setLoading(true, getJokes());
   };
-  console.log(jokes);
-
+  let sortedJokes = jokes.sort((a, b) => b.votes - a.votes);
   const renderJokes = () =>
-    jokes.map(j => (
+    sortedJokes.map(j => (
       <Joke
         key={j.id}
         text={j.text}
@@ -69,7 +78,7 @@ function JokeList(props) {
         </h1>
         <img src={logo} alt="smiley logo" />
         <button onClick={handleClick} type="button" className="add-joke-btn">
-          Add Joke
+          Fetch Jokes
         </button>
       </div>
 
@@ -89,7 +98,7 @@ function JokeList(props) {
 }
 
 JokeList.defaultProps = {
-  numOfJokes: 10,
+  numOfJokes: 10
 };
 
 export default JokeList;
