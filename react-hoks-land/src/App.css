@@ -1,0 +1,26 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh -20px);
+}
+
+.container {
+  width: 67%;
+  margin: 1rem auto;
+  box-shadow: 3px 2px 3px 2px #ccc;
+  text-align: center;
+  transition: .2s ease-in-out;
+  padding: 2rem;
+}
+
+.container:hover {
+  box-shadow: 3px 3px 4px 3px #ccc;
+}
+
+
+button {
+  display: block;
+  margin: 0 auto;
+}
