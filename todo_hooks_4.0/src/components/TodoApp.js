@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import uuid from 'uuid/v4';
+import React from 'react';
+
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,32 +8,14 @@ import Grid from '@material-ui/core/Grid';
 import todosDb from '../data';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
+import useTodoApp from '../hooks/useTodoApp';
 
 export default function TodoApp() {
-  const [todos, setTodos] = useState(todosDb);
+  const initialTodos = todosDb;
+  const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoApp(
+    initialTodos
+  );
 
-  const addTodo = todo => {
-    setTodos([...todos, { id: uuid(), task: todo, completed: false }]);
-  };
-
-  const removeTodo = todoId => {
-    const updatedTodos = todos.filter(todo => todo.id !== todoId);
-    setTodos(updatedTodos);
-  };
-
-  const toggleTodo = todoId => {
-    const updatedTodos = todos.map(todo =>
-      todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-    );
-    setTodos(updatedTodos);
-  };
-
-  const editTodo = (todoId, newTask) => {
-    const updatedTodos = todos.map(todo =>
-      todo.id === todoId ? { ...todo, task: newTask } : todo
-    );
-    setTodos(updatedTodos);
-  };
   return (
     <Paper
       style={{

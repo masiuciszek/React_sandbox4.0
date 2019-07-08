@@ -21,7 +21,7 @@ const Todo = ({
 
   return (
     <>
-      <ListItem>
+      <ListItem style={{ height: 64 }}>
         {editing ? (
           <EditForm editTodo={editTodo} id={id} task={task} toggle={toggle} />
         ) : (

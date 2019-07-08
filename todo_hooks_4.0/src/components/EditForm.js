@@ -13,12 +13,14 @@ const EditForm = ({ editTodo, id, task, toggle }) => {
         reset('');
         toggle();
       }}
+      style={{ marginLeft: '1rem', width: '50%' }}
     >
       <TextField
         margin="normal"
         value={value}
         onChange={handleChange}
         fullWidth
+        autoFocus
       />
     </form>
   );

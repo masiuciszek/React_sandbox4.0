@@ -7,20 +7,29 @@ import PropTypes from 'prop-types';
 import Todo from './Todo';
 
 const TodoList = ({ todos, removeTodo, toggleTodo, editTodo }) => {
-  const renderTodos = todos.map(todo => (
-    <Todo
-      key={todo.id}
-      todo={todo}
-      removeTodo={removeTodo}
-      toggleTodo={toggleTodo}
-      editTodo={editTodo}
-    />
-  ));
-  return (
-    <Paper>
-      <List>{renderTodos}</List>
-    </Paper>
+  const renderTodos = todos.map(
+    (todo, i) => (
+      <>
+        <Todo
+          key={todo.id}
+          todo={todo}
+          removeTodo={removeTodo}
+          toggleTodo={toggleTodo}
+          editTodo={editTodo}
+        />
+        {i < todos.length - 1 && <Divider />}
+      </>
+    ),
+    [todos]
   );
+  if (todos.length) {
+    return (
+      <Paper>
+        <List> {renderTodos}</List>
+      </Paper>
+    );
+  }
+  return null;
 };
 
 TodoList.propTypes = {
