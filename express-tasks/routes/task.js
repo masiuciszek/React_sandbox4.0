@@ -74,4 +74,54 @@ router.get('/demo-tasks', async (req, res) => {
   }
 });
 
+/*
+@ method Put /api/tasks/:id
+@ desc update Task
+@ access Private
+*/
+router.put('/:id', auth, async (req, res) => {
+  const { title, description, completed } = req.body;
+  const taskFields = {};
+  if (title) taskFields.title = title;
+  if (description) taskFields.description = description;
+  if (completed) taskFields.completed = completed;
+  try {
+    let task = await Task.findById(req.params.id);
+    if (!task) return res.status(401).json({ msg: 'Task not found' });
+
+    // check that user own the task
+    if (task.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Not authorized' });
+    }
+    console.log(task.user, ' task.user');
+    console.log(task.user.toString(), ' task.user.toString()');
+    task = await Task.findByIdAndUpdate(
+      req.params.id,
+      { $set: taskFields },
+      { new: true }
+    );
+    res.json(task);
+  } catch (err) {
+    res.status(500).send('Server error');
+  }
+});
+
+/*
+@ method Put /api/tasks/:id
+@ desc update Task
+@ access Private
+*/
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    let task = await Task.findById(req.params.id);
+    if (task.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Not authorized' });
+    }
+    task = await Task.findByIdAndRemove(req.params.id);
+    res.send('Task got deleted ');
+  } catch (err) {
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
