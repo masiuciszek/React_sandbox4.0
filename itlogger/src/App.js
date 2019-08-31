@@ -17,9 +17,9 @@ function App() {
     <TechProvider>
       <LogProvider>
         <Layout>
-          {on ? <AddLog className="modal" toggle={toggle} /> : null}
-          {editLog && <EditLog toggleEditLo={toggleEditLog} />}
+          {on && <AddLog className="modal" toggle={toggle} /> }
           <Logs />
+          {editLog && <EditLog className="modal" toggleEditLog={toggleEditLog} />}
           <AddBtn toggle={toggle} toggleEditLog={toggleEditLog} />
         </Layout>
       </LogProvider>

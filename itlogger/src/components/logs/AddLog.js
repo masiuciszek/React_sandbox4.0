@@ -9,6 +9,8 @@ import { StyledInput } from '../styled/Input';
 import useForm from '../../hooks/useForm';
 import { LogContext } from '../../context/logs/logs.state';
 import TechOption from '../techs/TechOption';
+import {BtnSubmit} from '../styled/Button'
+import { Select } from '../styled/Select';
 
 const AddLog = props => {
   const { addLog } = useContext(LogContext);
@@ -58,18 +60,18 @@ const AddLog = props => {
               value={message}
               onChange={onChangeForMsg}
             />
-            <select
-              name="tech"
-              id="techs"
-              value={tech}
-              onChange={onChangeForTech}
-            >
-              <option value="" disabled>
-                Select a tech
-              </option>
 
-              <TechOption />
-            </select>
+
+            <Select  name="tech"
+            id="techs"
+            value={tech}
+            onChange={onChangeForTech}>
+            <option value="" disabled>
+            Select a tech
+          </option>
+
+          <TechOption />
+            </Select>
             <div className="attention">
               <input
                 type="checkbox"
@@ -80,7 +82,7 @@ const AddLog = props => {
               />
               <span>Need attention</span>
             </div>
-            <button type="submit">Submit</button>
+            <BtnSubmit type="submit">Add Log </BtnSubmit>
           </form>
         </div>
         <div className="modal-footer">
@@ -96,7 +98,7 @@ const AddLog = props => {
   );
 };
 
-const ModalWrapper = styled.div`
+ export const ModalWrapper = styled.div`
   background: white;
   border: 1px solid #d0cccc;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
@@ -203,5 +205,7 @@ const ModalWrapper = styled.div`
     padding: 10px;
     font-weight: bold;
   }
+
+
 `;
 export default AddLog;
