@@ -5,7 +5,7 @@ export const Btn = styled.button`
   padding: 0.2em 0.2em;
   border: none;
   color: #333;
-  transition: all cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 300ms ease-in-out;
   font-size: 12px;
   background: transparent;
   cursor: pointer;
@@ -14,3 +14,16 @@ export const Btn = styled.button`
     color: ${cl.white};
   }
 `;
+
+
+export const BtnSubmit = styled(Btn)`
+font-size: 18px;
+border: 2px solid ${cl.dark};
+border-radius: 8px;
+margin: .6em 0;
+&:hover{
+  color: ${cl.white};
+  background: ${cl.success};
+
+}
+`
