@@ -9,11 +9,13 @@ import HookForm from './components/HookForm';
 import SimpleFormUseHook from './components/SimpleFormUseHook';
 import TitleCount from './components/TitleCount';
 import StarWarsMovies from './components/StarWarsMovies';
+import TimeFun from './components/TimeFun';
 
 export default function App() {
   return (
     <div className="App">
       <h1>React Hooks World</h1>
+      <TimeFun />
       <StarWarsMovies />
       <TitleCount />
       <ClassToggle />
