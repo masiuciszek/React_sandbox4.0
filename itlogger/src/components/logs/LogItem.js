@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -6,7 +8,7 @@ import { cl } from '../styled/Global';
 import { LogContext } from '../../context/logs/logs.state';
 
 const LogItem = ({ log }) => {
-  const { removeLog } = useContext(LogContext);
+  const { removeLog, setCurrent } = useContext(LogContext);
 
   const handleDelete = () => {
     removeLog(log.id);
@@ -15,7 +17,11 @@ const LogItem = ({ log }) => {
     <>
       <StyledLog>
         {' '}
-        <span className={log.attention ? 'attention' : 'natural'}>
+        <span
+          id="msg"
+          className={log.attention ? 'attention' : 'natural'}
+          onClick={() => setCurrent(log)}
+        >
           {log.message}
         </span>{' '}
         Created by
@@ -56,6 +62,20 @@ const StyledLog = styled.li`
     /* position: absolute;
     right: 0;
     top: 0; */
+  }
+  #msg {
+    position: relative;
+    margin: 3em 0;
+    transition: all 300ms ease-in-out;
+    &:hover {
+      &::after {
+        content: 'Edit';
+        position: absolute;
+        top: -25px;
+        left: 0;
+        transition: all 300ms ease-in-out;
+      }
+    }
   }
 `;
 export default LogItem;

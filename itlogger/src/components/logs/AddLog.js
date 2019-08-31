@@ -8,6 +8,7 @@ import { cl } from '../styled/Global';
 import { StyledInput } from '../styled/Input';
 import useForm from '../../hooks/useForm';
 import { LogContext } from '../../context/logs/logs.state';
+import TechOption from '../techs/TechOption';
 
 const AddLog = props => {
   const { addLog } = useContext(LogContext);
@@ -66,9 +67,8 @@ const AddLog = props => {
               <option value="" disabled>
                 Select a tech
               </option>
-              <option value="Mia">Mia</option>
-              <option value="Stina">Stina</option>
-              <option value="Karol">Karol</option>
+
+              <TechOption />
             </select>
             <div className="attention">
               <input

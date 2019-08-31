@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
 
 export const cl = {
   danger: '#ff6f91',
@@ -33,4 +33,14 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+`;
+
+export const fade = keyframes`
+from {
+  opacity: 0;
+}
+to {
+
+  opacity: 1;
+}
 `;
