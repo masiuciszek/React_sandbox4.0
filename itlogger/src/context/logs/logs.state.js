@@ -8,6 +8,8 @@ import {
   DELETE_LOG,
   ADD_LOG,
   SEARCH_LOGS,
+  SET_CURRENT,
+  UPDATE_LOG,
 } from '../types';
 
 export const LogContext = createContext();
@@ -68,6 +70,25 @@ const LogProvider = props => {
     }
   };
 
+  const updateLog = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    try {
+      setLoading();
+      const res = await Axios.put(`/logs/${formData.id}`, formData, config);
+      dispatch({ type: UPDATE_LOG, payload: res.data });
+    } catch (err) {
+      dispatch({ type: LOGS_ERROR, payload: err.response });
+    }
+  };
+
+  const setCurrent = log => {
+    dispatch({ type: SET_CURRENT, payload: log });
+  };
+
   return (
     <LogContext.Provider
       value={{
@@ -79,6 +100,8 @@ const LogProvider = props => {
         removeLog,
         addLog,
         searchLogs,
+        setCurrent,
+        updateLog,
       }}
     >
       {props.children}

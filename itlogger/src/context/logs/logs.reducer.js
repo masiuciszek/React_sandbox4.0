@@ -4,6 +4,7 @@ import {
   DELETE_LOG,
   ADD_LOG,
   SEARCH_LOGS,
+  SET_CURRENT,
 } from '../types';
 
 export default (state, { type, payload }) => {
@@ -24,6 +25,11 @@ export default (state, { type, payload }) => {
       return {
         ...state,
         logs: payload,
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: payload,
       };
     case DELETE_LOG:
       return {

@@ -10,7 +10,6 @@ function Logs() {
     getLogs();
   }, []);
 
-  console.log(logs);
   return (
     <StyledLogs>
       <ul>
@@ -31,13 +30,16 @@ const StyledLogs = styled.div`
   box-shadow: 2px 2px 3px 2px #ccc;
   margin: 3em auto;
   padding: 3em;
-
+  height: 100%;
   ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+    li {
+      margin: 2em 0;
+    }
   }
 `;
 export default Logs;

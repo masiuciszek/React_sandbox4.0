@@ -1,5 +1,7 @@
 import React, { createContext, useReducer } from 'react';
+import axios from 'axios';
 import TechReducer from './techs.reducer';
+import { GET_TECHS, SET_LOADING, TECHS_ERROR } from '../types';
 
 export const TechContext = createContext();
 const TechProvider = props => {
@@ -9,12 +11,28 @@ const TechProvider = props => {
     error: null,
   };
   const [state, dispatch] = useReducer(TechReducer, initialState);
+
+  const setLoading = () => {
+    dispatch({ type: SET_LOADING });
+  };
+
+  const getTechs = async () => {
+    try {
+      setLoading();
+      const res = await axios.get('/techs');
+      dispatch({ type: GET_TECHS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: TECHS_ERROR, payload: err.message });
+    }
+  };
+
   return (
     <TechContext.Provider
       value={{
         techs: state.techs,
         loading: state.loading,
         error: state.error,
+        getTechs,
       }}
     >
       {props.children}
