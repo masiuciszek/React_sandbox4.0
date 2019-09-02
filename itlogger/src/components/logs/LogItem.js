@@ -7,12 +7,18 @@ import { Delete } from 'styled-icons/feather';
 import { cl } from '../styled/Global';
 import { LogContext } from '../../context/logs/logs.state';
 
-const LogItem = ({ log }) => {
+const LogItem = ({ log,toggleEditLog }) => {
   const { removeLog, setCurrent } = useContext(LogContext);
 
   const handleDelete = () => {
     removeLog(log.id);
   };
+
+  const handleCurrent = () => {
+    setCurrent(log)
+    toggleEditLog()
+
+  }
   return (
     <>
       <StyledLog>
@@ -20,7 +26,7 @@ const LogItem = ({ log }) => {
         <span
           id="msg"
           className={log.attention ? 'attention' : 'natural'}
-          onClick={() => setCurrent(log)}
+          onClick={handleCurrent}
         >
           {log.message}
         </span>{' '}
@@ -37,6 +43,7 @@ const LogItem = ({ log }) => {
 };
 LogItem.propTypes = {
   log: PropTypes.object.isRequired,
+  toggleEditLog: PropTypes.func.isRequired,
 };
 
 const StyledLog = styled.li`

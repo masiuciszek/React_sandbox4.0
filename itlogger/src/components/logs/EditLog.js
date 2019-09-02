@@ -11,15 +11,38 @@ import useForm from '../../hooks/useForm';
 import styled from 'styled-components'
 
 const EditLog = ({ toggleEditLog }) => {
-  const  {setCurrent, updateLog} = useContext(LogContext)
+  const  { updateLog,current} = useContext(LogContext)
 
-  const [message, onChangeForMsg, reset] = useForm();
+  const [message, onChangeForMsg, reset,setMessage] = useForm();
   const [attention, onChangeForAttention, reset2, setValue] = useForm(false);
-  const [tech, onChangeForTech, reset3] = useForm();
-  const handleSubmit = (e) => {
-    //
-  }
+  const [tech, onChangeForTech, reset3, setTech] = useForm();
 
+
+    useEffect(() => {
+      if(current){
+        setMessage(current.message)
+        setValue(current.attention)
+        setTech(current.tech)
+      }
+    },[current])
+
+    const handleSubmit = (e) => {
+      if (message.length === '' && tech.length === '') {
+          return
+      } else {
+        const updatedLog = {
+          id: current.id,
+          message,
+          attention,
+          tech,
+          date: Date.now()
+        }
+        updateLog(updatedLog);
+      }
+      reset()
+      reset2()
+      reset3()
+    }
 
   return (
     <>
@@ -45,7 +68,8 @@ const EditLog = ({ toggleEditLog }) => {
         />
 
 
-        <Select  name="tech"
+        <Select
+        name="tech"
         id="techs"
         value={tech}
         onChange={onChangeForTech}>
