@@ -12,15 +12,20 @@ function Logs({toggleEditLog}) {
   }, []);
 
   return (
-    <StyledLogs>
-      <ul>
-        {!loading && logs !== null ? (
-          logs.map(log => <LogItem key={log.id} log={log} toggleEditLog={toggleEditLog} />)
-        ) : (
-          <h1>...Loading</h1>
-        )}
-      </ul>
-    </StyledLogs>
+    <>
+
+        <StyledLogs>
+        <ul>
+          {!loading && logs !== null ? (
+            logs.map(log => <LogItem key={log.id} log={log} toggleEditLog={toggleEditLog} />)
+          ) : (
+            <h1>...Loading</h1>
+          )}
+        </ul>
+      </StyledLogs>
+
+
+    </>
   );
 }
 

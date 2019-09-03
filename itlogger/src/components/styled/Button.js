@@ -3,15 +3,15 @@ import { cl, fade } from './Global';
 
 export const Btn = styled.button`
   padding: 0.2em 0.2em;
-  border: none;
-  color: #333;
+  border: ${props => props.cl ? '2px solid #fff' : 'none' };
+  color: ${props => props.cl ? '#fff' : '#333' };
   transition: all 300ms ease-in-out;
   font-size: 12px;
   background: transparent;
   cursor: pointer;
   animation: ${fade} 300ms ease-in-out;
   &:hover {
-    color: ${cl.white};
+    color: ${props => props.cl ? `${cl.primary}`: '#fff' };
   }
 `;
 

@@ -1,29 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Add } from 'styled-icons/crypto';
-import { Edit3 } from 'styled-icons/feather';
-import { AddressBook } from 'styled-icons/fa-solid';
 import { JoystickButton } from 'styled-icons/boxicons-regular';
 import PropTypes from 'prop-types';
 import { cl, fade } from '../styled/Global';
-import useToggle from '../../hooks/useToggle';
-import { Btn } from '../styled/Button';
+import { Btn } from '../styled/Button'
+import { List } from 'styled-icons/icomoon';
 
-function AddBtn({ toggle, toggleEditLog }) {
-  // const [on, toggle] = useToggle();
+
+
+function AddBtn({ toggle,toggleTechs,toggleAddTechs }) {
+
   return (
     <StyledAddBtn>
       <span>
         <JoystickButton size="55" onClick={toggle} />
       </span>
       <div className="btn-group">
-        <Btn>
+
+      <Btn onClick={toggleAddTechs}>
+      {' '}
+      <Add size="35" />{' '}
+      </Btn>
+
+        <Btn onClick={toggleTechs}>
           {' '}
-          <Add size="35" />{' '}
-        </Btn>
-        <Btn onClick={toggleEditLog}>
-          {' '}
-          <Edit3 size="35" />{' '}
+          <List size="35" />{' '}
         </Btn>
       </div>
     </StyledAddBtn>
@@ -31,8 +33,9 @@ function AddBtn({ toggle, toggleEditLog }) {
 }
 
 AddBtn.propTypes = {
-  toggleEditLog: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
+  toggleTechs: PropTypes.func.isRequired,
+  toggleAddTechs: PropTypes.func.isRequired,
 };
 
 const StyledAddBtn = styled.div`

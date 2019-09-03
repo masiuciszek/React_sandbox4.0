@@ -6,23 +6,30 @@
       "attention": true,
       "tech": "John Doe",
       "date": 1567453146706
+    },
+    {
+      "message": "Co for ar run",
+      "attention": true,
+      "tech": "Sara Wilson",
+      "date": "2019-09-03T08:29:14.978Z",
+      "id": 2
     }
   ],
   "techs": [
     {
-      "id": 1,
-      "firstName": "John",
-      "lastName": "Doe"
-    },
-    {
-      "id": 2,
-      "firstName": "Sam",
-      "lastName": "Smith"
-    },
-    {
       "id": 3,
       "firstName": "Sara",
       "lastName": "Wilson"
+    },
+    {
+      "id": 46,
+      "firstName": "aleks",
+      "lastName": "alekvoirs"
+    },
+    {
+      "id": 1,
+      "firstName": "mia ",
+      "lastName": "svensson"
     }
   ]
 }

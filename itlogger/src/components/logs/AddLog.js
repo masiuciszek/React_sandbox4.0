@@ -133,7 +133,7 @@ const AddLog = props => {
   }
 
   .modal-header {
-    background: #263238;
+    background: ${cl.primary};
     height: 10em;
     line-height: 40px;
     padding: 5px 20px;
@@ -154,9 +154,9 @@ const AddLog = props => {
   }
 
   .modal-footer {
-    background: #263238;
+    background: ${cl.dark};
     height: 35px;
-    padding: 15px;
+    padding: 4em;
   }
 
   .close-modal-btn {
