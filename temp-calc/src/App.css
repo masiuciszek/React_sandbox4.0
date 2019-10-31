@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.f-group {
+  padding: 1.5rem 1rem;
+  border-bottom: 2px solid #0e58ac9d;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 25vh;
+}
+
+.f-group:first-child::before {}
+
+.f-group:last-child {
+  /* height: 35vh; */
+}
+
+.f-group:last-child {
+  /* height: 35vh; */
+}
+
+.f-group>* {
+  margin: 2rem;
+}
+
+.f-group input {
+  width: 100%;
+  font-size: 5rem;
+  background: none;
+  border: none;
+  color: #07070705;
+  /* text-align: center; */
+  padding: 7rem 2rem;
+  position: relative;
+}
+
+.f-group h1 {
+  position: absolute;
+  font-size: 6rem;
+
+}
