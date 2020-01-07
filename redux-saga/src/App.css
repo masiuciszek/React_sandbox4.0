@@ -1,0 +1,42 @@
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.counter {
+  display: flex;
+  height: 79vh;
+  width: 49vh;
+  justify-content: center;
+  align-self: center;
+  background: rgba(0, 9, 33, 0.6);
+  align-items: center;
+}
+
+button {
+  width: 16rem;
+}
+
+.counter h1 {
+  text-align: center;
+  color: #fff;
+}
