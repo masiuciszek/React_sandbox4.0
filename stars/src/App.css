@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+}
+.stars {
+  display: flex;
+  justify-content: center;
+  max-width: 900px;
+  margin: 5em auto;
+}
+.star-item {
+  width: 3rem;
+  height: 5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 2em;
+}
+
+.star {
+  width: 50%;
+}
